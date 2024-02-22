@@ -51,3 +51,8 @@ while(i<len(Mobile)):
     print(Mobile[i])
     i = i + 1
 
+# Summary of today
+    # Mutable Data Type : List, Set, Dictionary, Array
+
+    # Immutable Data Type: Integers, Float, Boolean, Strings, Tuples, Bytes
+
