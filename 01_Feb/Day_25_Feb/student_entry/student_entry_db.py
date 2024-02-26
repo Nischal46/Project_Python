@@ -16,9 +16,10 @@ try:
     )
     ''')
 
-    def add_student(student_name, student_email, student_contact):
+    def add_student_details(student_name, student_email, student_contact):
         db.execute("INSERT INTO students (name, email, contact) VALUES (?, ?, ?)", (student_name, student_email, student_contact))
         conn.commit()
+        print('Successfully add the student details')
 
     def get_all_student_details():
         db.execute("SELECT * FROM students")
@@ -29,7 +30,28 @@ try:
             student_dict = dict(student_row)
             st_array.append(student_dict)
         print(st_array)
-    
+
+    def update_student_details(id, updated_name):
+        db.execute('''
+        UPDATE students SET name = ?,
+                   WHERE id = ?''', (updated_name, id))
+        conn.commit()
+        print('Successfully update student data')
+
+    def delete_student_details(id):
+        db.execute("DELETE FROM students where id = ?", (id,))
+        conn.commit()
+        print("Deleted Successfully")
+
+
+    def get_Studentby_id(id):
+        db.execute("SELECT * FROM students where id = ?", (id,))
+        response = db.fetchone()
+        if(response):
+            st_dict = dict(response)
+
+        print(st_dict)
+
 except sqlite3.Error as e:
     print("An error occurred:", e.args[0])
 
@@ -54,10 +76,26 @@ def main():
                 st_name = input("Enter student name: ")
                 st_email = input("Enter student email: ")
                 st_contact = input("Enter student contact: ")
-                add_student(st_name, st_email, st_contact)
+                add_student_details(st_name, st_email, st_contact)
+
+            case 2:
+                st_id  = int(input("Enter student id to be updated: "))
+                update_name = input("Enter updated student name: ")
+                update_student_details(st_id, update_name)
+
+            case 3:
+                st_id = int(input("Enter studeent id to be deleted: "))
+                delete_student_details(st_id)
 
             case 4:
                 get_all_student_details()
+
+            case 5:
+                st_id = int(input("Enter a student id that need to search details: "))
+                get_Studentby_id(st_id)
+
+            case 6:
+                bool = False
 
             case _:
                 print('Invalid input choice.Please use correct choice.')
