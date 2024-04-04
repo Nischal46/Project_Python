@@ -1,0 +1,16 @@
+#checking whether the string is palindrome or not
+
+original_string = 'popp'
+
+string_length = len(original_string) - 1
+reverse_string = ""
+
+while(string_length >= 0):
+    reverse_string = reverse_string + original_string[string_length]
+    
+    string_length -= 1
+
+if(original_string == reverse_string):
+    print(f'{original_string} is a palindrome string')
+else:
+    print(f'{original_string} is not palindrome number')
