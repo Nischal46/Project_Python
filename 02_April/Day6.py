@@ -15,7 +15,17 @@ class Rectangle(Area):
         area = self.length * self.breadth
         print(f'Area of rectangle is {area} cm^2')
 
-obj1 = Rectangle(3,2)
-obj1.Area_of_Rectangle()
-obj1.details()
+
+
+
+for i in range(1, 10):
+    obj1 = Rectangle(3,2)
+    obj1.Area_of_Rectangle()
+    obj1.details()
+
+for i in range(1, 6):
+    for j in range(i, 6):
+        print('*', end="")
+
+    print("")
 
