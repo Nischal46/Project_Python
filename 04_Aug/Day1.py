@@ -11,3 +11,14 @@ print(divisibleby2)
 
 x = lambda a, b, c : a + b + c
 print(x(6, 6, 2))
+
+import json
+
+# some JSON:
+x =  '{ "name":"John", "age":30, "city":"New York"}'
+
+# parse x:
+y = json.loads(x)
+
+# the result is a Python dictionary:
+print(y)
